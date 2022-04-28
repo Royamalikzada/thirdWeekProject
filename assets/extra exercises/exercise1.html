@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libreria</title>
+    <style>
+        .container {
+            margin-left: 5em;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+    <p>Scegli il libro:</p>
+
+    <select name="libro" id="libro">
+        <option value="20">Classic</option>
+        <option value="10">Science-Fiction</option>
+        <option value="15">Roman</option>
+    </select>
+
+    <p>Scegli la quantità:</p>
+
+    <input type="number" id="quantita" name="quantita">
+
+    <p>Applica sconto %:</p>
+
+    <input type="number" id="sconto" name="sconto">
+
+    <p>Totale:</p>
+
+    <input type="text" id="totale" name="totale" readonly>
+    
+
+    <div>
+        <button id="btn">Calcola totale</button>
+    </div>
+
+    </div>
+
+    <script>
+
+        var quantita = document.getElementById("quantita");
+        var sconto = document.getElementById("sconto");
+        var totale = document.getElementById("totale");
+        var libro = document.getElementById("libro");
+        var btn = document.getElementById("btn");
+
+        libro.addEventListener("change", myFunction);
+        quantita.addEventListener("change", myFunction);
+        sconto.addEventListener("change",myFunction);
+        btn.addEventListener("click",myFunction);
+        
+
+        function myFunction() {
+                var txt;
+                txt = libro.value*quantita.value; 
+
+               if (sconto.value>0) {
+                   txt = txt - txt*sconto.value/100;
+               }
+            totale.value = txt;
+            
+
+        }
+        
+    </script>
+
+
+</body>
+</html>
